@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=VT323&display=swap');
+
+
+:root {
+	--font-serif: 'Merriweather', serif;
+	--font-sans: 'Rubik', sans-serif;
+	--font-mono: 'VT323', monospace;
+	--font-condensed: 'Oswald', sans-serif;
+	--dark-bg: #263238;
+	--dark-fg: #eceff1;
+	--dark-em: mediumvioletred;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	background: var(--dark-bg);
+	color: var(--dark-fg);
+	font-family: var(--font-serif);
+}
+
+.hide {
+	display: none !important;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	overflow: hidden;
+}
+
+.app {
+	>h1 {
+		text-align: center;
+
+		.title {
+			color: var(--dark-em);
+		}
+	}
+}
+
+.loading-spinner {
+	position: fixed;
+	z-index: 999;
+	bottom: 0;
+	right: 0;
+	margin: 16px;
+	border: 4px solid var(--dark-bg);
+	border-radius: 50%;
+	border-top: 4px solid var(--dark-em);
+	width: 16px;
+	height: 16px;
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	/* Spin 4 times */
+	50% {
+		transform: rotate(1440deg);
+	}
+
+	/* Spin 2 times */
+	100% {
+		transform: rotate(2160deg);
+	}
+}
