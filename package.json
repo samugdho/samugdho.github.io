@@ -1,0 +1,24 @@
+{
+  "name": "samugdho.github.io",
+  "version": "1.0.0",
+  "description": "My page",
+  "main": "index.js",
+  "scripts": {
+    "update-version": "node update-version.mjs",
+    "start": "http-server --port 3001 ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samugdho/samugdho.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samugdho/samugdho.github.io/issues"
+  },
+  "homepage": "https://github.com/samugdho/samugdho.github.io#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.32"
+  }
+}

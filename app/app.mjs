@@ -15,7 +15,7 @@ class App {
 		 */
 		// @ts-ignore	
 		let Embed = _Embed;
-		await Embed.Load.link(`/${App.URL}/../app/app.css`);
+		await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733037145269`);
 
 		$('head title').text(`${this.Title}`);
 
@@ -93,7 +93,9 @@ class App {
 			saveSettings();
 		}
 		// @ts-ignore
-		window.tts_reader_switch_theme = switchTheme;
+		window._app = {
+			switch_theme: switchTheme,
+		}
 		saveSettings();
 
 		B('settings').appendTo('body').append(
@@ -106,7 +108,7 @@ class App {
 				let page = B('settings-page').append(
 					B('theme-switch', 'button').attr('mode', mode)
 						.text(mode == 'dark' ? 'Dark Mode' : 'Light Mode')
-						.attr('onclick', 'tts_reader_switch_theme(event)')
+						.attr('onclick', '_app.switch_theme(event)'),
 				);
 				App.Popup(page.html(), 'modal');
 			})

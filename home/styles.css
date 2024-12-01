@@ -1,0 +1,26 @@
+a.link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.5em;
+  border: solid 1px #607D8B;
+  margin: 4px;
+  padding: 8px 16px;
+  color: var(--dark-fg);
+  border-radius: 4px;
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link .icon {
+  margin-right: 8px;
+  transform: rotateY(0deg);
+  transition: transform .3s;
+}
+
+.link:hover .icon {
+  transform: rotateY(360deg);
+}
