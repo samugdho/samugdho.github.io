@@ -1,0 +1,25 @@
+.resume {
+	padding-left: 8px;
+	h2 {
+		font-family: var(--font-sans);
+    letter-spacing: 7px;
+    font-weight: 100;
+    text-align: center;
+    color: #90A4AE;
+	}
+	p {
+		background: #00000033;
+		padding: 8px;
+		border-radius: 4px;
+		margin-right: 8px;
+		color: #9cb3bf;
+	}
+	code {
+		background: #0000002e;
+		padding: 2px 7px;
+		border-radius: 4px;
+		color: var(--dark-em);
+		margin: 2px;
+		font-family: var(--font-sans);
+	}
+}

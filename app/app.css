@@ -37,12 +37,19 @@ body {
 	overflow: hidden;
 }
 
+a.home-page {
+	color: var(--dark-fg);
+}
+
 .app {
 	z-index: 10;
-	position: fixed;
-	width: 100%;
-	min-height: 100%;
-	
+  position: fixed;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 4px;
+
 	>h1 {
 		text-align: center;
 
@@ -80,4 +87,124 @@ body {
 	100% {
 		transform: rotate(2160deg);
 	}
+}
+
+.popup {
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	backdrop-filter: blur(5px) brightness(0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	a {
+		text-decoration: none;
+		color: #12383d;
+		background: #27906c;
+		padding: 0 4px;
+		border-radius: 2px;
+	}
+
+	pre.message {
+		margin: 0;
+		background: #00c9e412;
+		color: #5fa7c8;
+		padding: 8px;
+		border-radius: 4px;
+		position: absolute;
+		max-width: calc(100% - 32px);
+		overflow: auto;
+		max-height: 350px;
+		border: solid 2px;
+	}
+
+	&[type='modal'] pre.message {
+		min-width: 300px;
+		padding: 0;
+		text-align: center;
+		border: none;
+		background: none;
+	}
+
+
+	&.error pre.message {
+		background: #ff000012;
+		color: #ff6363;
+
+		a {
+			background: #df504f;
+			color: #400c0f;
+		}
+	}
+
+}
+
+.page {
+  margin: 4px auto;
+  width: min(640px, calc(100% - 8px));
+  min-height: calc(100% - 128px);
+  border-radius: 8px;
+  backdrop-filter: blur(2px);
+  border: solid 1px #324249;
+}
+
+.settings {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 8px;
+	z-index: 15;
+
+	.icon {
+		transition: rotate .3s;
+		cursor: pointer;
+	}
+
+	.icon:hover {
+		rotate: 180deg;
+	}
+}
+
+button {
+	border-radius: 4px;
+  background: transparent;
+  border: solid 1px var(--dark-em);
+  color: var(--dark-em);
+  transition: filter .1s;
+  font-size: 1.2em;
+  padding: 8px 16px;
+  margin: 4px;
+  font-family: var(--font-sans);
+
+	&:active {
+		filter: brightness(.5);
+	}
+}
+
+.lock {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--dark-em);
+	border-radius: 4px;
+}
+
+a {
+	color: var(--dark-em);
+	text-decoration: none;
 }
