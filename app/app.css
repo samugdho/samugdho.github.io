@@ -9,7 +9,10 @@
 	--dark-bg: #263238;
 	--dark-fg: #eceff1;
 	--dark-em: mediumvioletred;
+	--dark-button-hover: #541b3e;
+	--dark-button-active: #3a0d2a;
 }
+
 
 html,
 body {
@@ -19,6 +22,27 @@ body {
 	background: var(--dark-bg);
 	color: var(--dark-fg);
 	font-family: var(--font-serif);
+}
+
+.flex {
+	display: flex;
+
+	&.center {
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	&.center {
+		text-align: center;
+	}
 }
 
 .hide {
@@ -43,12 +67,12 @@ a.home-page {
 
 .app {
 	z-index: 10;
-  position: fixed;
-  width: calc(100% - 8px);
-  height: calc(100% - 8px);
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 4px;
+	position: fixed;
+	width: calc(100% - 8px);
+	height: calc(100% - 8px);
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: 4px;
 
 	>h1 {
 		text-align: center;
@@ -96,7 +120,7 @@ a.home-page {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	backdrop-filter: blur(5px) brightness(0.5);
+	backdrop-filter: blur(5px) brightness(0.75);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -123,7 +147,7 @@ a.home-page {
 	}
 
 	&[type='modal'] pre.message {
-		min-width: 300px;
+		min-width: 100%;
 		padding: 0;
 		text-align: center;
 		border: none;
@@ -144,12 +168,14 @@ a.home-page {
 }
 
 .page {
-  margin: 4px auto;
-  width: min(640px, calc(100% - 8px));
-  min-height: calc(100% - 128px);
-  border-radius: 8px;
-  backdrop-filter: blur(2px);
-  border: solid 1px #324249;
+	margin: 4px auto;
+	width: min(640px, calc(100% - 8px));
+	min-height: calc(100% - 164px);
+	border-radius: 8px;
+	backdrop-filter: blur(4px);
+	background: #080a0b17;
+	border: solid 1px #324249;
+	margin-bottom: 64px;
 }
 
 .settings {
@@ -169,20 +195,104 @@ a.home-page {
 	}
 }
 
-button {
+
+
+.settings-page {
+	display: flex;
+	width: min(600px, 100% - 32px);
+	margin: auto;
 	border-radius: 4px;
-  background: transparent;
-  border: solid 1px var(--dark-em);
-  color: var(--dark-em);
-  transition: filter .1s;
-  font-size: 1.2em;
-  padding: 8px 16px;
-  margin: 4px;
-  font-family: var(--font-sans);
+	min-height: 300px;
+	overflow: hidden;
+	border: solid 1px #263f4b;
+
+	.tabs {
+		width: 172px;
+	}
+
+	.tab-content {
+		flex: 1;
+		background: #263f4b;
+	}
+
+	.tab {
+		color: gray;
+		padding: 8px;
+		margin: 4px;
+		border-radius: 4px;
+		cursor: pointer;
+
+		&.selected {
+			color: white;
+			background: #263238;
+		}
+
+		&:hover {
+			color: white;
+		}
+	}
+}
+
+
+button {
+
+	border-radius: 4px;
+	background: transparent;
+	border: solid 1px;
+	color: var(--dark-em);
+	transition: filter .1s;
+	font-size: 24px;
+	padding: 8px 16px;
+	margin: 4px;
+	font-family: var(--font-sans);
+	position: relative;
+	overflow: hidden;
+	border-color: var(--dark-em);
+	cursor: pointer;
+	transition: all .1s, background .3s ease-out;
+
+	.icon {
+		margin-right: 8px;
+	}
+
+	&::before {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: 0px;
+		height: 0px;
+		background: var(--dark-button-hover);
+		border-radius: 100em;
+		transition: all .3s ease-out;
+		z-index: -1;
+	}
+
+	&:hover {
+		background: var(--dark-button-hover);
+		border-color: var(--dark-button-hover);
+
+		&::before {
+			width: 200px;
+			height: 200px;
+		}
+	}
 
 	&:active {
-		filter: brightness(.5);
+		background: var(--dark-button-active);
+		border-color: var(--dark-button-active);
+		color: var(--dark-button-hover);
+
+		&::before {
+			width: 0px;
+			height: 0px;
+		}
 	}
+}
+
+.icon {
+	font-size: 24px;
 }
 
 .lock {

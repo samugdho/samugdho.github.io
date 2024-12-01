@@ -1,7 +1,7 @@
 // @ts-check
 /**
 	 * Embed external resources and wait for them to load.
-	 * @typedef {'jquery' | 'lz-string' | 'p5js' | 'material-icons' | 'livejs' | 'crypto-js'} EmbedKey
+	 * @typedef {import('./types').EmbedKey} EmbedKey
 	 * @param {...EmbedKey} options
 	 * @returns {Promise<void>} Resolves when all resources are loaded.
 	 */
@@ -39,6 +39,11 @@ const Embed = async function (...options) {
 			name: 'Crypto.js',
 			type: 'script',
 			url: 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js'
+		},
+		jspdf:{
+			name: 'jsPDF (latest)',
+			type: 'script',
+			url: 'https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js'
 		},
 		three: {
 			name: 'Three.js',

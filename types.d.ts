@@ -1,4 +1,4 @@
-export type EmbedKey = 'jquery' | 'lz-string' | 'p5js' | 'material-icons' | 'livejs' | 'crypto-js';
+export type EmbedKey = 'jquery' | 'lz-string' | 'p5js' | 'material-icons' | 'livejs' | 'crypto-js' | 'jspdf';
 export type EmbedFunction = (...options: EmbedKey[]) => Promise<void>;
 export type Embed = {
 	Load: {

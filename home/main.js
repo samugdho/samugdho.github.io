@@ -10,8 +10,8 @@ embed('jquery', 'material-icons').then(async () => {
 	 */
 	// @ts-ignore	
 	let Embed = window._Embed;
-	await Embed.Load.script('../app/app.mjs?v=1733037145274', true);
-	await Embed.Load.link('./styles.css?v=1733037145274');
+	await Embed.Load.script('../app/app.mjs?v=1733037987960', true);
+	await Embed.Load.link('./styles.css?v=1733037987960');
 	
 	/**
 	 * @type {import('../types').App}

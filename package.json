@@ -20,5 +20,8 @@
   "homepage": "https://github.com/samugdho/samugdho.github.io#readme",
   "devDependencies": {
     "@types/jquery": "^3.5.32"
+  },
+  "dependencies": {
+    "@types/jspdf": "^2.0.0"
   }
 }
