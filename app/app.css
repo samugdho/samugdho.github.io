@@ -38,6 +38,11 @@ body {
 }
 
 .app {
+	z-index: 10;
+	position: fixed;
+	width: 100%;
+	min-height: 100%;
+	
 	>h1 {
 		text-align: center;
 
