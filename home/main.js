@@ -10,8 +10,8 @@ embed('jquery', 'material-icons').then(async () => {
 	 */
 	// @ts-ignore	
 	let Embed = window._Embed;
-	await Embed.Load.script('../app/app.mjs?v=1733037987960', true);
-	await Embed.Load.link('./styles.css?v=1733037987960');
+	await Embed.Load.script('../app/app.mjs?v=1733105001710', true);
+	await Embed.Load.link('./styles.css?v=1733105001710');
 	
 	/**
 	 * @type {import('../types').App}
@@ -40,7 +40,17 @@ function Home() {
 				name: 'Resume',
 				url: '/resume',
 				icon: 'article'
-			}
+			},
+			{
+				name: 'Squig',
+				url: '/squig',
+				icon: 'gesture'
+			},
+			// {
+			// 	name: 'Hidden',
+			// 	url: '/hidden',
+			// 	icon: 'lock'
+			// }
 		].map((link) => B('link', 'a').attr('href', link.url).append(
 			App.Icon(link.icon), 
 			B('', 'span').text(link.name)

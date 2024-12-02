@@ -178,12 +178,12 @@ a.home-page {
 	margin-bottom: 64px;
 }
 
-.settings {
+.settings-fixed {
 	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 8px;
+	top: 16px;
+	right: 16px;
 	z-index: 15;
+	transition: right .3s;
 
 	.icon {
 		transition: rotate .3s;
@@ -193,8 +193,49 @@ a.home-page {
 	.icon:hover {
 		rotate: 180deg;
 	}
+
+	&.hidden {
+		right: -64px;
+	}
 }
 
+.nav-bar {
+	height: 48px;
+	position: fixed;
+	top: -48px;
+	left: 0;
+	z-index: 10;
+	backdrop-filter: blur(4px);
+	background: #080a0b17;
+	border-bottom: solid 1px #324249;
+	transition: top .3s;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 8px;
+	width: calc(100% - 16px);
+
+	&.show {
+		top: 0;
+	}
+
+
+	a.home-page {
+		font-size: 28px;
+		color: var(--dark-em);
+		font-weight: bold;
+	}
+
+	.icon.settings {
+		transition: rotate .3s;
+		cursor: pointer;
+
+		&:hover {
+			rotate: 180deg;
+		}
+	}
+
+}
 
 
 .settings-page {

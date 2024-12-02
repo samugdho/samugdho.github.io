@@ -3,3 +3,4 @@ gulpfile.js
 /pug/
 /scss/
 package-lock.json
+/hidden/

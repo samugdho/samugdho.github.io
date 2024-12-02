@@ -15,14 +15,22 @@ class App {
      */
     // @ts-ignore
     let Embed = _Embed;
-    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733094762839`);
+    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733098787633`);
 
     $("head title").text(`${this.Title}`);
 
     this.SetupSettings();
 
+    // @ts-ignore
+    window._app = {
+      // @ts-ignore
+      ...(window._app || {}),
+      on_scroll: App.Scroll,
+    };
+
     let B = this.B;
     B("app")
+      .attr("onscroll", "_app.on_scroll(event)")
       .appendTo("body")
       .append(
         B("", "h1").append(
@@ -30,7 +38,15 @@ class App {
           B("title", "span").text(`${this.Title}`)
         ),
         B("loading-spinner hide"),
-        B("page")
+        B("page"),
+				B('nav-bar').append(
+					B('left').append(
+						B("home-page", "a").attr("href", "/").text(this.Title),
+					),
+					B('right').append(
+						this.Icon("settings").attr("onclick", "_app.settings.open(event)")
+					)
+				)
       );
     this.Grid();
     $(window).on("resize", () => {
@@ -39,6 +55,18 @@ class App {
     setTimeout(() => {
       $(".app-cover").removeClass("show");
     }, 100);
+  }
+  /**
+   *
+   * @param {Event} e
+   */
+  static Scroll(e) {
+    if (!e.target) return;
+    let scrollTop = $(e.target).scrollTop();
+    if(!scrollTop) return;
+		let showConditon = scrollTop > 84;
+		$('.nav-bar').toggleClass('show', showConditon);
+		$('.settings-fixed').toggleClass('hidden', showConditon);
   }
   /**
    *
@@ -58,10 +86,11 @@ class App {
   static Icon(name) {
     return App.B(`icon ${name} material-symbols-sharp`).html(name);
   }
+	static SettingsKey = "tts-reader-settings";
   static SetupSettings() {
     let B = this.B;
     let Icon = this.Icon;
-    const SettingsKey = "tts-reader-settings";
+    const SettingsKey = this.SettingsKey;
     /**
      * @type {string | null}
      */
@@ -95,31 +124,45 @@ class App {
     }
     // @ts-ignore
     window._app = {
-      switch_theme: switchTheme,
+      // @ts-ignore
+      ...(window._app || {}),
+      settings: {
+        switch_theme: switchTheme,
+				open: App.OpenSettings
+      },
     };
     saveSettings();
 
-    B("settings")
+    B("settings-fixed")
       .appendTo("body")
-      .append(
-        Icon("settings").on("click", (e) => {
-          // @ts-ignore
-          let settings = JSON.parse(localStorage.getItem(SettingsKey));
-          let mode = settings.theme;
-          // Must not have anonymous function events
-          // Will be converted to HTML text
-          let page = B("settings-page").append(
-            B("tabs").append(B("tab selected").attr('name', 'general').text("General")),
-            B("tab-content").attr('tab', 'general').append(
-              B("theme-switch", "button")
-                .attr("mode", mode)
-                .text(mode == "dark" ? "Dark Mode" : "Light Mode")
-                .attr("onclick", "_app.switch_theme(event)")
-            )
-          );
-          App.Popup(page[0].outerHTML, "modal");
-        })
-      );
+      .append(Icon("settings").attr("onclick", "_app.settings.open(event)"));
+  }
+	/**
+	 * 
+	 * @param {PointerEvent} e 
+	 */
+  static OpenSettings(e) {
+		const SettingsKey = App.SettingsKey;
+		let B = App.B;
+    // @ts-ignore
+    let settings = JSON.parse(localStorage.getItem(SettingsKey));
+    let mode = settings.theme;
+    // Must not have anonymous function events
+    // Will be converted to HTML text
+    let page = B("settings-page").append(
+      B("tabs").append(
+        B("tab selected").attr("name", "general").text("General")
+      ),
+      B("tab-content")
+        .attr("tab", "general")
+        .append(
+          B("theme-switch", "button")
+            .attr("mode", mode)
+            .text(mode == "dark" ? "Dark Mode" : "Light Mode")
+            .attr("onclick", "_app.settings.switch_theme(event)")
+        )
+    );
+    App.Popup(page[0].outerHTML, "modal");
   }
   static GridGap = 72;
   /**
