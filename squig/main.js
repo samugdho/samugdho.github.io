@@ -29,6 +29,11 @@ embed('jquery', 'material-icons', 'p5js').then(async () => {
 		title: 'Squig',
 		url: 'squig',
 	});
+	$('.app').addClass('fullscreen');
+	$('.nav-bar').addClass('show');
+	$('.settings-fixed').addClass('hidden');
+	$('.app > h1').addClass('hide');
+	// $('.nav-bar .icon.nav-hide').removeClass('hide');
 	App.Page(Home());
 });
 

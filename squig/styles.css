@@ -1,6 +1,7 @@
-.page {
-  width: calc(100% - 8px) !important;
+.app.fullscreen .page {
+  width: calc(100% - 4px);
   overflow: hidden;
-  height: calc(100% - 85px);
-  margin-bottom: 0px !important;
+  height: calc(100% - 51px);
+  margin-bottom: 0px;
+  margin-top: 48px;
 }

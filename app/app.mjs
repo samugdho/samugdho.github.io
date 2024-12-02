@@ -26,6 +26,7 @@ class App {
       // @ts-ignore
       ...(window._app || {}),
       on_scroll: App.Scroll,
+      hide_navbar: App.ToggleHideNavbar,
     };
 
     let B = this.B;
@@ -44,7 +45,8 @@ class App {
 						B("home-page", "a").attr("href", "/").text(this.Title),
 					),
 					B('right').append(
-						this.Icon("settings").attr("onclick", "_app.settings.open(event)")
+						this.Icon("settings").attr("onclick", "_app.settings.open(event)"),
+            this.Icon('hide').addClass('hide nav-hide').attr('onclick', '_app.hide_navbar(event)')
 					)
 				)
       );
@@ -55,6 +57,13 @@ class App {
     setTimeout(() => {
       $(".app-cover").removeClass("show");
     }, 100);
+  }
+  /**
+   * 
+   * @param {PointerEvent} e 
+   */
+  static ToggleHideNavbar(e) {
+    $('.nav-bar').toggleClass('show');
   }
   /**
    *
