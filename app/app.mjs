@@ -1,5 +1,5 @@
 // @ts-check
-class App {
+export default class App {
   static Title = "App";
   static URL = "app";
   /**
@@ -15,7 +15,7 @@ class App {
      */
     // @ts-ignore
     let Embed = _Embed;
-    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733098787633`);
+    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733515720370`);
 
     $("head title").text(`${this.Title}`);
 
@@ -30,7 +30,7 @@ class App {
     };
 
     let B = this.B;
-    B("app")
+    let $app = B("app")
       .attr("onscroll", "_app.on_scroll(event)")
       .appendTo("body")
       .append(
@@ -50,6 +50,7 @@ class App {
 					)
 				)
       );
+    this.EnableMode(options, $app);
     this.Grid();
     $(window).on("resize", () => {
       this.Grid();
@@ -57,6 +58,30 @@ class App {
     setTimeout(() => {
       $(".app-cover").removeClass("show");
     }, 100);
+  }
+  /**
+   * 
+   * @param {import('../types').AppStartOptions} options 
+   * @param {JQuery<HTMLElement>} $app 
+   */
+  static EnableMode(options, $app){
+    if(options.mode == 'p5'){
+      $app.addClass('fullscreen');
+      $app.find('.nav-bar').addClass('show');
+      $('.settings-fixed').addClass('hidden');
+      $app.find('>h1').addClass('hide');
+      if(!options.sketch){
+        App.Popup('Sketch not found', 'error');
+        return;
+      }
+      try{
+        // @ts-ignore
+        new p5(options.sketch, $app.find('.page').get(0));
+      } catch(e){
+        App.Popup('p5.js not found', 'error');
+        return;
+      }
+    }
   }
   /**
    * 

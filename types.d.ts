@@ -9,6 +9,8 @@ export type Embed = {
 export type AppStartOptions = {
 	title?: string;
 	url?: string;
+	mode?: 'p5'
+	sketch?: (p: import('p5')) => void
 }
 export type App = {
 	Start: (options?: AppStartOptions) => Promise<void>;
