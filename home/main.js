@@ -10,8 +10,8 @@ embed('jquery', 'material-icons').then(async () => {
 	 */
 	// @ts-ignore	
 	let Embed = window._Embed;
-	await Embed.Load.script('../app/app.mjs?v=1733204010609', true);
-	await Embed.Load.link('./styles.css?v=1733204010609');
+	await Embed.Load.script('../app/app.mjs?v=1733531084400', true);
+	await Embed.Load.link('./styles.css?v=1733531084400');
 	
 	/**
 	 * @type {import('../types').App}
@@ -45,6 +45,11 @@ function Home() {
 				name: 'Squig',
 				url: '/squig',
 				icon: 'gesture'
+			},
+			{
+				name: 'Minesweeper',
+				url: '/minesweeper',
+				icon: 'bomb'
 			},
 			// {
 			// 	name: 'Hidden',

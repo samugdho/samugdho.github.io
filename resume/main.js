@@ -10,8 +10,8 @@ embed("jquery", "material-icons", "jspdf").then(async () => {
    */
   // @ts-ignore
   let Embed = window._Embed;
-  await Embed.Load.script("../app/app.mjs?v=1733204010617", true);
-  await Embed.Load.link("./styles.css?v=1733204010617");
+  await Embed.Load.script("../app/app.mjs?v=1733516009843", true);
+  await Embed.Load.link("./styles.css?v=1733516009843");
   /**
    * @type {import('../types').App}
    */

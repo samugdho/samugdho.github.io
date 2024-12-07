@@ -15,7 +15,7 @@ export default class App {
      */
     // @ts-ignore
     let Embed = _Embed;
-    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733515720370`);
+    await Embed.Load.link(`/${App.URL}/../app/app.css?v=1733548625164`);
 
     $("head title").text(`${this.Title}`);
 

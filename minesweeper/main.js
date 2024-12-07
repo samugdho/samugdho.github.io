@@ -7,7 +7,7 @@
 // @ts-ignore
 const embed = Embed;
 embed('jquery', 'material-icons', 'p5js').then(async () => {
-	const V = 'v=1733531154978';
+	const V = 'v=1733562601970';
 	/**
 	 * @type {import('../types').Embed}
 	 */
@@ -16,25 +16,25 @@ embed('jquery', 'material-icons', 'p5js').then(async () => {
 	await Embed.Load.link('./styles.css?' + V);
 
 	const Modules = {
-		/** @type {import('./squig.mjs')} */
-		Squig: null,
+		/** @type {import('./minesweeper.mjs')} */
+		Minesweeper: null,
 		/** @type {import('../app/app.mjs')} */
 		App: null
 	};
 	try {
-		Modules.Squig = await import('./squig.mjs?' + V);
+		Modules.Minesweeper = await import('./minesweeper.mjs?' + V);
 		Modules.App = await import('../app/app.mjs?' + V);
 	}catch(e){
 		console.error('Failed to load modules', e);
 	}
-	const Squig = Modules.Squig.default;
+	const Minesweeper = Modules.Minesweeper.default;
 	const App = Modules.App.default;
 	await App.Start({
-		title: 'Squig',
-		url: 'squig',
+		title: 'Minesweeper',
+		url: 'minesweeper',
 		mode: 'p5',
 		// @ts-ignore
-		sketch: Squig.Sketch,
+		sketch: Minesweeper.Sketch,
 	});
 });
 
